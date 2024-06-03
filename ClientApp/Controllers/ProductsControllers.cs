@@ -33,7 +33,7 @@ namespace ClientApp.Controllers
         [HttpPost]
         public async Task<IActionResult> Create(Product product)
         {
-            var response = await _httpClient.PostAsJsonAsync("products", product);
+            var response = await _httpClient.PostAsJsonAsync("/api/products", product);
             if (response.IsSuccessStatusCode)
             {
                 return RedirectToAction(nameof(Index));
@@ -42,7 +42,7 @@ namespace ClientApp.Controllers
         }
 
         public async Task<IActionResult> Edit(int id)
-        {
+        {        // API Gateway'e istek atıyoruz
             var response = await _httpClient.GetAsync($"products/{id}");
             response.EnsureSuccessStatusCode();
             var responseContent = await response.Content.ReadAsStringAsync();
