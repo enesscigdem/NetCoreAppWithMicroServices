@@ -3,8 +3,8 @@
 MicroNest is a robust application demonstrating the power of .NET Core with a comprehensive microservices architecture. This project leverages multiple microservices to handle various aspects of product and order management, ensuring high scalability, maintainability, and flexibility.
 
 <div style="display: flex; flex-wrap: wrap; gap: 10px;">
-   <img width="1479" alt="Ekran Resmi 2024-06-04 01 54 57" src="https://github.com/enesscigdem/NetCoreAppWithMicroServices/assets/55703841/f364b81a-af37-42de-96bd-3d16b8d2eef3">
- <img width="400" alt="Ekran Resmi 2024-06-04 01 51 11" src="https://github.com/enesscigdem/NetCoreAppWithMicroServices/assets/55703841/d12d13a5-4c0a-49bd-a935-39b238f6e92f">
+    <img width="400" alt="Ekran Resmi 2024-06-04 01 54 57" src="https://github.com/enesscigdem/NetCoreAppWithMicroServices/assets/55703841/d0393279-7a79-4900-a14c-8fc4ed40adcd">
+    <img width="400" alt="Ekran Resmi 2024-06-04 01 51 11" src="https://github.com/enesscigdem/NetCoreAppWithMicroServices/assets/55703841/d12d13a5-4c0a-49bd-a935-39b238f6e92f">
     <img width="400" alt="Ekran Resmi 2024-06-04 01 51 31" src="https://github.com/enesscigdem/NetCoreAppWithMicroServices/assets/55703841/cdc2dbac-5ab1-40e9-8033-1182269e0e29">
     <img width="400" alt="Ekran Resmi 2024-06-04 01 51 31" src="https://github.com/enesscigdem/NetCoreAppWithMicroServices/assets/55703841/81becea6-ca71-4488-94c4-8f4f962040be">
     <img width="400" alt="Ekran Resmi 2024-06-04 01 52 24" src="https://github.com/enesscigdem/NetCoreAppWithMicroServices/assets/55703841/0257e3a0-698c-4164-8200-f7e0862cfbb3">
@@ -17,6 +17,8 @@ MicroNest is a robust application demonstrating the power of .NET Core with a co
 - **Order Management**: Real-time tracking and management of orders.
 - **API Gateway**: Facilitates secure and efficient communication between services.
 - **Responsive Design**: Utilizes Tailwind CSS for a modern and responsive UI.
+- **Scalability**: Efficiently handles over 10,000 records in both product and order services.
+- **Uptime Monitoring**: Includes an Uptime Robot to monitor service health and status.
 
 ## Technologies Used
 
@@ -72,7 +74,7 @@ Access the API Gateway at `https://localhost:5236` to interact with the services
 
 ### Health Monitoring
 
-MicroNest includes a health check dashboard to monitor the status of each microservice. Access the dashboard at `/dashboard` to see the current status and uptime of each service.
+MicroNest includes a health check dashboard to monitor the status of each microservice. Access the dashboard at `/dashboard` to see the current status and uptime of each service. The project also integrates with Uptime Robot for continuous monitoring.
 
 ## Contributing
 
