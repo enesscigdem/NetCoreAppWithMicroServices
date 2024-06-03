@@ -2,6 +2,13 @@
 
 MicroNest is a robust application demonstrating the power of .NET Core with a comprehensive microservices architecture. This project leverages multiple microservices to handle various aspects of product and order management, ensuring high scalability, maintainability, and flexibility.
 
+<img width="1505" alt="Ekran Resmi 2024-06-04 01 51 11" src="https://github.com/enesscigdem/NetCoreAppWithMicroServices/assets/55703841/d12d13a5-4c0a-49bd-a935-39b238f6e92f">
+<img width="1495" alt="Ekran Resmi 2024-06-04 01 51 31" src="https://github.com/enesscigdem/NetCoreAppWithMicroServices/assets/55703841/cdc2dbac-5ab1-40e9-8033-1182269e0e29">
+<img width="1495" alt="Ekran Resmi 2024-06-04 01 51 31" src="https://github.com/enesscigdem/NetCoreAppWithMicroServices/assets/55703841/81becea6-ca71-4488-94c4-8f4f962040be">
+<img width="1472" alt="Ekran Resmi 2024-06-04 01 52 24" src="https://github.com/enesscigdem/NetCoreAppWithMicroServices/assets/55703841/0257e3a0-698c-4164-8200-f7e0862cfbb3">
+<img width="1477" alt="Ekran Resmi 2024-06-04 01 52 17" src="https://github.com/enesscigdem/NetCoreAppWithMicroServices/assets/55703841/3cd33cd8-8820-4862-87cd-e9b93d55d616">
+
+
 ## Features
 
 - **Product Management**: Extensive CRUD operations for product data.
@@ -77,3 +84,4 @@ This project is licensed under the MIT License. See the [LICENSE](LICENSE) file 
 
 - Inspired by the principles of microservices architecture and modern web development practices.
 - Special thanks to the developers and contributors of the libraries and frameworks used in this project.
+
