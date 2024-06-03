@@ -18,13 +18,23 @@ namespace ClientApp.Controllers
 
         public async Task<IActionResult> Index(int pageNumber = 1, int pageSize = 10)
         {
-            var response = await _httpClient.GetAsync($"/api/orders?pageNumber={pageNumber}&pageSize={pageSize}");
-            response.EnsureSuccessStatusCode();
-            var responseContent = await response.Content.ReadAsStringAsync();
-            var orders = JsonConvert.DeserializeObject<IEnumerable<Order>>(responseContent);
-            return View(orders);
+            try
+            {
+                var response = await _httpClient.GetAsync($"/api/orders?pageNumber={pageNumber}&pageSize={pageSize}");
+                response.EnsureSuccessStatusCode();
+                var responseContent = await response.Content.ReadAsStringAsync();
+                var order = JsonConvert.DeserializeObject<IEnumerable<Order>>(responseContent);
+                ViewBag.OrderServiceStatus = "Up";
+                ViewBag.CurrentPage = pageNumber;
+                ViewBag.PageSize = pageSize;
+                return View(order);
+            }
+            catch (HttpRequestException)
+            {
+                ViewBag.OrderServiceStatus = "Down";
+                return View(new List<Order>());
+            }
         }
-
         public IActionResult Create()
         {
             return View();

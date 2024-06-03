@@ -22,11 +22,22 @@ namespace ClientApp.Controllers
 
         public async Task<IActionResult> Index(int pageNumber = 1, int pageSize = 10)
         {
-            var response = await _httpClient.GetAsync($"/api/products?pageNumber={pageNumber}&pageSize={pageSize}");
-            response.EnsureSuccessStatusCode();
-            var responseContent = await response.Content.ReadAsStringAsync();
-            var products = JsonConvert.DeserializeObject<IEnumerable<Product>>(responseContent);
-            return View(products);
+            try
+            {
+                var response = await _httpClient.GetAsync($"/api/products?pageNumber={pageNumber}&pageSize={pageSize}");
+                response.EnsureSuccessStatusCode();
+                var responseContent = await response.Content.ReadAsStringAsync();
+                var products = JsonConvert.DeserializeObject<IEnumerable<Product>>(responseContent);
+                ViewBag.ProductServiceStatus = "Up";
+                ViewBag.CurrentPage = pageNumber;
+                ViewBag.PageSize = pageSize;
+                return View(products);
+            }
+            catch (HttpRequestException)
+            {
+                ViewBag.ProductServiceStatus = "Down";
+                return View(new List<Product>());
+            }
         }
 
         public IActionResult Create()
@@ -42,6 +53,7 @@ namespace ClientApp.Controllers
             {
                 return RedirectToAction(nameof(Index));
             }
+
             return View(product);
         }
 
@@ -55,6 +67,7 @@ namespace ClientApp.Controllers
             {
                 return NotFound();
             }
+
             return View(product);
         }
 
@@ -71,6 +84,7 @@ namespace ClientApp.Controllers
             {
                 return RedirectToAction(nameof(Index));
             }
+
             return View(product);
         }
 
@@ -84,6 +98,7 @@ namespace ClientApp.Controllers
             {
                 return NotFound();
             }
+
             return View(product);
         }
 
@@ -95,46 +110,46 @@ namespace ClientApp.Controllers
             {
                 return RedirectToAction(nameof(Index));
             }
+
             return View();
         }
 
         [HttpPost]
-        public IActionResult LoadData()
+        public async Task<IActionResult> LoadData()
         {
             var draw = HttpContext.Request.Form["draw"].FirstOrDefault();
-            var start = Request.Form["start"].FirstOrDefault();
-            var length = Request.Form["length"].FirstOrDefault();
-            var sortColumn = Request.Form["columns[" + Request.Form["order[0][column]"].FirstOrDefault() + "][name]"].FirstOrDefault();
-            var sortColumnDirection = Request.Form["order[0][dir]"].FirstOrDefault();
-            var searchValue = Request.Form["search[value]"].FirstOrDefault();
+            var start = HttpContext.Request.Form["start"].FirstOrDefault();
+            var length = HttpContext.Request.Form["length"].FirstOrDefault();
+            var sortColumn = HttpContext.Request
+                .Form["columns[" + HttpContext.Request.Form["order[0][column]"].FirstOrDefault() + "][name]"]
+                .FirstOrDefault();
+            var sortColumnDirection = HttpContext.Request.Form["order[0][dir]"].FirstOrDefault();
+            var searchValue = HttpContext.Request.Form["search[value]"].FirstOrDefault();
 
             int pageSize = length != null ? Convert.ToInt32(length) : 0;
             int skip = start != null ? Convert.ToInt32(start) : 0;
-            int recordsTotal = 0;
 
-            var productData = _productRepository.GetAllProducts(1, 10000).AsQueryable();
+            var response = await _httpClient.GetAsync($"/products");
+            response.EnsureSuccessStatusCode();
+            var responseContent = await response.Content.ReadAsStringAsync();
+            var products = JsonConvert.DeserializeObject<List<Product>>(responseContent).AsQueryable();
+
+            if (!string.IsNullOrEmpty(searchValue))
+            {
+                products = products.Where(m => m.Name.Contains(searchValue));
+            }
 
             if (!(string.IsNullOrEmpty(sortColumn) && string.IsNullOrEmpty(sortColumnDirection)))
             {
-                productData = productData.OrderBy(sortColumn + " " + sortColumnDirection);
-            }
-            if (!string.IsNullOrEmpty(searchValue))
-            {
-                productData = productData.Where(m => m.Name.Contains(searchValue));
+                products = products.OrderBy(sortColumn + " " + sortColumnDirection);
             }
 
-            recordsTotal = productData.Count();
-            var data = productData.Skip(skip).Take(pageSize).Select(p => new {
-                p.Id,
-                p.Name,
-                p.Price,
-                EditUrl = Url.Action("Edit", new { id = p.Id }),
-                DeleteUrl = Url.Action("Delete", new { id = p.Id })
-            }).ToList();
-    
-            var jsonData = new { draw = draw, recordsFiltered = recordsTotal, recordsTotal = recordsTotal, data = data };
+            int recordsTotal = products.Count();
+            var data = products.Skip(skip).Take(pageSize).ToList();
+
+            var jsonData = new
+                { draw = draw, recordsFiltered = recordsTotal, recordsTotal = recordsTotal, data = data };
             return Ok(jsonData);
         }
-
     }
 }

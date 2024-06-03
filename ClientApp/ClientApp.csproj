@@ -17,6 +17,8 @@
     </ItemGroup>
 
     <ItemGroup>
+      <AdditionalFiles Include="Views\Dashboard\Index.cshtml" />
+      <AdditionalFiles Include="Views\Dashboard\Privacy.cshtml" />
       <AdditionalFiles Include="Views\Orders\Create.cshtml" />
       <AdditionalFiles Include="Views\Orders\Delete.cshtml" />
       <AdditionalFiles Include="Views\Orders\Edit.cshtml" />
