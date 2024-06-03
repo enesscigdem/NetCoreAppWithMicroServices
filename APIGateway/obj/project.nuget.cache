@@ -1,0 +1,28 @@
+{
+  "version": 2,
+  "dgSpecHash": "3TPokmAMMKBTFrSBp0XK5Dr/kU/lRHI2lbx/H0ZWS7bK/T6czbSRMuN1BOuqJUdAyOgLmM9d6MJYgRPIpto1YQ==",
+  "success": true,
+  "projectFilePath": "/Users/enescigdem/RiderProjects/NetCoreAppWithMicroServices/APIGateway/APIGateway.csproj",
+  "expectedPackageFiles": [
+    "/Users/enescigdem/.nuget/packages/fluentvalidation/11.8.0/fluentvalidation.11.8.0.nupkg.sha512",
+    "/Users/enescigdem/.nuget/packages/ipaddressrange/6.0.0/ipaddressrange.6.0.0.nupkg.sha512",
+    "/Users/enescigdem/.nuget/packages/microsoft.aspnetcore.jsonpatch/7.0.14/microsoft.aspnetcore.jsonpatch.7.0.14.nupkg.sha512",
+    "/Users/enescigdem/.nuget/packages/microsoft.aspnetcore.middlewareanalysis/7.0.14/microsoft.aspnetcore.middlewareanalysis.7.0.14.nupkg.sha512",
+    "/Users/enescigdem/.nuget/packages/microsoft.aspnetcore.mvc.newtonsoftjson/7.0.14/microsoft.aspnetcore.mvc.newtonsoftjson.7.0.14.nupkg.sha512",
+    "/Users/enescigdem/.nuget/packages/microsoft.aspnetcore.openapi/7.0.17/microsoft.aspnetcore.openapi.7.0.17.nupkg.sha512",
+    "/Users/enescigdem/.nuget/packages/microsoft.csharp/4.7.0/microsoft.csharp.4.7.0.nupkg.sha512",
+    "/Users/enescigdem/.nuget/packages/microsoft.extensions.apidescription.server/6.0.5/microsoft.extensions.apidescription.server.6.0.5.nupkg.sha512",
+    "/Users/enescigdem/.nuget/packages/microsoft.extensions.dependencyinjection.abstractions/7.0.0/microsoft.extensions.dependencyinjection.abstractions.7.0.0.nupkg.sha512",
+    "/Users/enescigdem/.nuget/packages/microsoft.extensions.diagnosticadapter/3.1.32/microsoft.extensions.diagnosticadapter.3.1.32.nupkg.sha512",
+    "/Users/enescigdem/.nuget/packages/microsoft.openapi/1.4.3/microsoft.openapi.1.4.3.nupkg.sha512",
+    "/Users/enescigdem/.nuget/packages/newtonsoft.json/13.0.1/newtonsoft.json.13.0.1.nupkg.sha512",
+    "/Users/enescigdem/.nuget/packages/newtonsoft.json.bson/1.0.2/newtonsoft.json.bson.1.0.2.nupkg.sha512",
+    "/Users/enescigdem/.nuget/packages/ocelot/23.2.2/ocelot.23.2.2.nupkg.sha512",
+    "/Users/enescigdem/.nuget/packages/swashbuckle.aspnetcore/6.5.0/swashbuckle.aspnetcore.6.5.0.nupkg.sha512",
+    "/Users/enescigdem/.nuget/packages/swashbuckle.aspnetcore.swagger/6.5.0/swashbuckle.aspnetcore.swagger.6.5.0.nupkg.sha512",
+    "/Users/enescigdem/.nuget/packages/swashbuckle.aspnetcore.swaggergen/6.5.0/swashbuckle.aspnetcore.swaggergen.6.5.0.nupkg.sha512",
+    "/Users/enescigdem/.nuget/packages/swashbuckle.aspnetcore.swaggerui/6.5.0/swashbuckle.aspnetcore.swaggerui.6.5.0.nupkg.sha512",
+    "/Users/enescigdem/.nuget/packages/system.diagnostics.diagnosticsource/4.7.1/system.diagnostics.diagnosticsource.4.7.1.nupkg.sha512"
+  ],
+  "logs": []
+}

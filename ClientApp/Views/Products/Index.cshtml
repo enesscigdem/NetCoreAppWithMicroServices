@@ -1,0 +1,32 @@
+﻿@model IEnumerable<ClientApp.Models.Product>
+
+@{
+    ViewData["Title"] = "Products";
+}
+
+<h1>Products</h1>
+
+<table class="min-w-full bg-white">
+    <thead>
+        <tr>
+            <th class="py-2">ID</th>
+            <th class="py-2">Name</th>
+            <th class="py-2">Price</th>
+            <th class="py-2">Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var product in Model)
+        {
+            <tr>
+                <td class="py-2">@product.Id</td>
+                <td class="py-2">@product.Name</td>
+                <td class="py-2">@product.Price</td>
+                <td class="py-2">
+                    <a href="@Url.Action("Edit", new { id = product.Id })" class="text-blue-500">Edit</a> |
+                    <a href="@Url.Action("Delete", new { id = product.Id })" class="text-red-500">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
