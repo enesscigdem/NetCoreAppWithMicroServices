@@ -1,0 +1,44 @@
+﻿@model IEnumerable<ClientApp.Models.Order>
+
+@{
+    ViewData["Title"] = "Orders";
+}
+
+<div class="bg-gray-800 text-white p-4 rounded-lg shadow-md">
+    <div class="flex justify-between items-center mb-4">
+        <div>
+            <h1 class="text-2xl font-bold">Orders</h1>
+            <p class="text-gray-400">A list of all the orders in your account including their product name and quantity.</p>
+        </div>
+        <div>
+            <a href="@Url.Action("Create")" class="px-4 py-2 bg-indigo-500 text-white rounded hover:bg-indigo-600">Add order</a>
+        </div>
+    </div>
+
+    <div class="overflow-x-auto">
+        <table class="min-w-full bg-gray-700 text-white border border-gray-600 shadow-md rounded-lg">
+            <thead class="bg-gray-600">
+            <tr>
+                <th class="py-2 px-4 border-b">ID</th>
+                <th class="py-2 px-4 border-b">Product Name</th>
+                <th class="py-2 px-4 border-b">Quantity</th>
+                <th class="py-2 px-4 border-b">Actions</th>
+            </tr>
+            </thead>
+            <tbody>
+            @foreach (var order in Model)
+            {
+                <tr class="hover:bg-gray-500">
+                    <td class="py-2 px-4 border-b">@order.Id</td>
+                    <td class="py-2 px-4 border-b">@order.ProductName</td>
+                    <td class="py-2 px-4 border-b">@order.Quantity</td>
+                    <td class="py-2 px-4 border-b">
+                        <a href="@Url.Action("Edit", new { id = order.Id })" class="text-blue-400 hover:text-blue-600">Edit</a> |
+                        <a href="@Url.Action("Delete", new { id = order.Id })" class="text-red-400 hover:text-red-600">Delete</a>
+                    </td>
+                </tr>
+            }
+            </tbody>
+        </table>
+    </div>
+</div>

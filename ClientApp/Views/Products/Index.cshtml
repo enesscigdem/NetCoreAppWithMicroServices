@@ -4,29 +4,41 @@
     ViewData["Title"] = "Products";
 }
 
-<h1>Products</h1>
+<div class="bg-gray-800 text-white p-4 rounded-lg shadow-md">
+    <div class="flex justify-between items-center mb-4">
+        <div>
+            <h1 class="text-2xl font-bold">Products</h1>
+            <p class="text-gray-400">A list of all the products in your account including their name and price.</p>
+        </div>
+        <div>
+            <a href="@Url.Action("Create")" class="px-4 py-2 bg-indigo-500 text-white rounded hover:bg-indigo-600">Add product</a>
+        </div>
+    </div>
 
-<table class="min-w-full bg-white">
-    <thead>
-        <tr>
-            <th class="py-2">ID</th>
-            <th class="py-2">Name</th>
-            <th class="py-2">Price</th>
-            <th class="py-2">Actions</th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var product in Model)
-        {
+    <div class="overflow-x-auto">
+        <table class="min-w-full bg-gray-700 text-white border border-gray-600 shadow-md rounded-lg">
+            <thead class="bg-gray-600">
             <tr>
-                <td class="py-2">@product.Id</td>
-                <td class="py-2">@product.Name</td>
-                <td class="py-2">@product.Price</td>
-                <td class="py-2">
-                    <a href="@Url.Action("Edit", new { id = product.Id })" class="text-blue-500">Edit</a> |
-                    <a href="@Url.Action("Delete", new { id = product.Id })" class="text-red-500">Delete</a>
-                </td>
+                <th class="py-2 px-4 border-b">ID</th>
+                <th class="py-2 px-4 border-b">Name</th>
+                <th class="py-2 px-4 border-b">Price</th>
+                <th class="py-2 px-4 border-b">Actions</th>
             </tr>
-        }
-    </tbody>
-</table>
+            </thead>
+            <tbody>
+            @foreach (var product in Model)
+            {
+                <tr class="hover:bg-gray-500">
+                    <td class="py-2 px-4 border-b">@product.Id</td>
+                    <td class="py-2 px-4 border-b">@product.Name</td>
+                    <td class="py-2 px-4 border-b">@product.Price</td>
+                    <td class="py-2 px-4 border-b">
+                        <a href="@Url.Action("Edit", new { id = product.Id })" class="text-blue-400 hover:text-blue-600">Edit</a> |
+                        <a href="@Url.Action("Delete", new { id = product.Id })" class="text-red-400 hover:text-red-600">Delete</a>
+                    </td>
+                </tr>
+            }
+            </tbody>
+        </table>
+    </div>
+</div>

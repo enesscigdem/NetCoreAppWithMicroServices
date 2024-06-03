@@ -6,23 +6,23 @@ using System.Threading.Tasks;
 
 namespace ClientApp.Controllers
 {
-    public class ProductsController : Controller
+    public class OrdersController : Controller
     {
         private readonly HttpClient _httpClient;
 
-        public ProductsController(IHttpClientFactory httpClientFactory)
+        public OrdersController(IHttpClientFactory httpClientFactory)
         {
             _httpClient = httpClientFactory.CreateClient();
-            _httpClient.BaseAddress = new Uri("https://localhost:5236/api/"); // API Gateway'e istek atıyoruz
+            _httpClient.BaseAddress = new Uri("https://localhost:5236/api/");
         }
 
         public async Task<IActionResult> Index(int pageNumber = 1, int pageSize = 10)
         {
-            var response = await _httpClient.GetAsync($"/api/products?pageNumber={pageNumber}&pageSize={pageSize}");
+            var response = await _httpClient.GetAsync($"/api/orders?pageNumber={pageNumber}&pageSize={pageSize}");
             response.EnsureSuccessStatusCode();
             var responseContent = await response.Content.ReadAsStringAsync();
-            var products = JsonConvert.DeserializeObject<IEnumerable<Product>>(responseContent);
-            return View(products);
+            var orders = JsonConvert.DeserializeObject<IEnumerable<Order>>(responseContent);
+            return View(orders);
         }
 
         public IActionResult Create()
@@ -31,62 +31,62 @@ namespace ClientApp.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Create(Product product)
+        public async Task<IActionResult> Create(Order order)
         {
-            var response = await _httpClient.PostAsJsonAsync("/api/products", product);
+            var response = await _httpClient.PostAsJsonAsync("/api/orders", order);
             if (response.IsSuccessStatusCode)
             {
                 return RedirectToAction(nameof(Index));
             }
-            return View(product);
+            return View(order);
         }
 
         public async Task<IActionResult> Edit(int id)
         {
-            var response = await _httpClient.GetAsync($"/api/products/{id}");
+            var response = await _httpClient.GetAsync($"/api/orders/{id}");
             response.EnsureSuccessStatusCode();
             var responseContent = await response.Content.ReadAsStringAsync();
-            var product = JsonConvert.DeserializeObject<Product>(responseContent);
-            if (product == null)
+            var order = JsonConvert.DeserializeObject<Order>(responseContent);
+            if (order == null)
             {
                 return NotFound();
             }
-            return View(product);
+            return View(order);
         }
 
         [HttpPost]
-        public async Task<IActionResult> Edit(int id, Product product)
+        public async Task<IActionResult> Edit(int id, Order order)
         {
-            if (id != product.Id)
+            if (id != order.Id)
             {
                 return BadRequest();
             }
 
-            var response = await _httpClient.PutAsJsonAsync($"/api/products/{id}", product);
+            var response = await _httpClient.PutAsJsonAsync($"/api/orders/{id}", order);
             if (response.IsSuccessStatusCode)
             {
                 return RedirectToAction(nameof(Index));
             }
-            return View(product);
+            return View(order);
         }
 
         public async Task<IActionResult> Delete(int id)
         {
-            var response = await _httpClient.GetAsync($"/api/products/{id}");
+            var response = await _httpClient.GetAsync($"/api/orders/{id}");
             response.EnsureSuccessStatusCode();
             var responseContent = await response.Content.ReadAsStringAsync();
-            var product = JsonConvert.DeserializeObject<Product>(responseContent);
-            if (product == null)
+            var order = JsonConvert.DeserializeObject<Order>(responseContent);
+            if (order == null)
             {
                 return NotFound();
             }
-            return View(product);
+            return View(order);
         }
 
         [HttpPost, ActionName("Delete")]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var response = await _httpClient.DeleteAsync($"/api/products/{id}");
+            var response = await _httpClient.DeleteAsync($"/api/orders/{id}");
             if (response.IsSuccessStatusCode)
             {
                 return RedirectToAction(nameof(Index));

@@ -4,28 +4,40 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - ClientApp</title>
-    <link rel="stylesheet" href="~/css/tailwind.css" />
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet"/>
+    <link href="css/site.css" rel="stylesheet"/>
 </head>
-<body>
-    <header class="bg-blue-500 text-white p-4">
-        <div class="container mx-auto">
-            <h1 class="text-2xl">ClientApp</h1>
-            <nav>
-                <ul class="flex space-x-4">
-                    <li><a href="/" class="text-white">Home</a></li>
-                    <li><a href="/Products" class="text-white">Products</a></li>
-                </ul>
-            </nav>
+<body class="flex flex-col min-h-screen bg-gray-900 text-white">
+<header class="bg-gray-800 p-4 shadow-md">
+    <div class="container mx-auto flex justify-between items-center">
+        <a href="#">
+            <img class="h-8 w-8" src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=500" alt="Your Company">
+        </a>
+        <nav class="hidden md:flex space-x-8">
+            <a href="/" class="text-white hover:text-gray-300">Home</a>
+            <a href="/Products" class="text-white hover:text-gray-300">Products</a>
+            <a href="/Orders" class="text-white hover:text-gray-300">Orders</a>
+        </nav>
+        <div class="hidden md:flex items-center space-x-4">
+            <a href="/login" class="text-white hover:text-gray-300">Log in <span aria-hidden="true">→</span></a>
         </div>
-    </header>
-    <div class="container mx-auto mt-4">
-        @RenderBody()
+        <div class="md:hidden">
+            <button type="button" class="text-white hover:text-gray-300">
+                <span class="sr-only">Open main menu</span>
+                <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
+                </svg>
+            </button>
+        </div>
     </div>
-    <footer class="bg-gray-800 text-white p-4 mt-4">
-        <div class="container mx-auto">
-            &copy; 2024 - ClientApp
-        </div>
-    </footer>
+</header>
+<main class="flex-grow container mx-auto mt-4">
+    @RenderBody()
+</main>
+<footer class="bg-gray-800 text-white p-4 mt-4">
+    <div class="container mx-auto text-center">
+        &copy; 2024 - ClientApp
+    </div>
+</footer>
 </body>
 </html>

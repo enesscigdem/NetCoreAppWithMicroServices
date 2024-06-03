@@ -4,20 +4,21 @@
     ViewData["Title"] = "Create Product";
 }
 
-<h1>Create Product</h1>
-
-<form asp-action="Create" method="post" class="space-y-4">
-    <div>
-        <label asp-for="Name" class="block">Name</label>
-        <input asp-for="Name" class="border rounded-md p-2 w-full" />
-        <span asp-validation-for="Name" class="text-red-500"></span>
-    </div>
-    <div>
-        <label asp-for="Price" class="block">Price</label>
-        <input asp-for="Price" class="border rounded-md p-2 w-full" />
-        <span asp-validation-for="Price" class="text-red-500"></span>
-    </div>
-    <div>
-        <button type="submit" class="bg-blue-500 text-white p-2 rounded-md">Create</button>
-    </div>
-</form>
+<div class="bg-gray-800 text-white p-4 rounded-lg shadow-md">
+    <h1 class="text-2xl font-bold mb-4">Create Product</h1>
+    <form asp-action="Create" method="post" class="space-y-4">
+        <div>
+            <label asp-for="Name" class="block">Name</label>
+            <input asp-for="Name" class="border rounded-md p-2 w-full bg-gray-700 text-white" />
+            <span asp-validation-for="Name" class="text-red-500"></span>
+        </div>
+        <div>
+            <label asp-for="Price" class="block">Price</label>
+            <input asp-for="Price" class="border rounded-md p-2 w-full bg-gray-700 text-white" />
+            <span asp-validation-for="Price" class="text-red-500"></span>
+        </div>
+        <div>
+            <button type="submit" class="bg-blue-500 text-white p-2 rounded-md">Create</button>
+        </div>
+    </form>
+</div>

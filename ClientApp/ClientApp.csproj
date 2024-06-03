@@ -15,4 +15,11 @@
       <ProjectReference Include="..\ProductService\ProductService.csproj" />
     </ItemGroup>
 
+    <ItemGroup>
+      <AdditionalFiles Include="Views\Orders\Create.cshtml" />
+      <AdditionalFiles Include="Views\Orders\Delete.cshtml" />
+      <AdditionalFiles Include="Views\Orders\Edit.cshtml" />
+      <AdditionalFiles Include="Views\Orders\Index.cshtml" />
+    </ItemGroup>
+
 </Project>

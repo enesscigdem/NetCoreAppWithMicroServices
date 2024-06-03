@@ -1,0 +1,24 @@
+﻿@model ClientApp.Models.Order
+
+@{
+    ViewData["Title"] = "Edit Order";
+}
+
+<div class="bg-gray-800 text-white p-4 rounded-lg shadow-md">
+    <h1 class="text-2xl font-bold mb-4">Edit Order</h1>
+    <form asp-action="Edit" method="post" class="space-y-4">
+        <div>
+            <label asp-for="ProductName" class="block">Product Name</label>
+            <input asp-for="ProductName" class="border rounded-md p-2 w-full bg-gray-700 text-white" />
+            <span asp-validation-for="ProductName" class="text-red-500"></span>
+        </div>
+        <div>
+            <label asp-for="Quantity" class="block">Quantity</label>
+            <input asp-for="Quantity" class="border rounded-md p-2 w-full bg-gray-700 text-white" />
+            <span asp-validation-for="Quantity" class="text-red-500"></span>
+        </div>
+        <div>
+            <button type="submit" class="bg-blue-500 text-white p-2 rounded-md">Save</button>
+        </div>
+    </form>
+</div>
