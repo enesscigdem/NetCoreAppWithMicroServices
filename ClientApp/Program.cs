@@ -1,6 +1,9 @@
+using ProductService.Data;
+
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllersWithViews().AddRazorRuntimeCompilation();
+builder.Services.AddSingleton<ProductRepository>();
 
 builder.Services.AddHttpClient();
 

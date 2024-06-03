@@ -374,3 +374,4 @@
 /Users/enescigdem/RiderProjects/NetCoreAppWithMicroServices/ClientApp/bin/Debug/net7.0/tr/Microsoft.CodeAnalysis.CSharp.resources.dll
 /Users/enescigdem/RiderProjects/NetCoreAppWithMicroServices/ClientApp/bin/Debug/net7.0/zh-Hans/Microsoft.CodeAnalysis.CSharp.resources.dll
 /Users/enescigdem/RiderProjects/NetCoreAppWithMicroServices/ClientApp/bin/Debug/net7.0/zh-Hant/Microsoft.CodeAnalysis.CSharp.resources.dll
+/Users/enescigdem/RiderProjects/NetCoreAppWithMicroServices/ClientApp/bin/Debug/net7.0/System.Linq.Dynamic.Core.dll

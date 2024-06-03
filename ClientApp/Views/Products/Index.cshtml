@@ -15,30 +15,59 @@
         </div>
     </div>
 
+    <form asp-action="Index" method="get" class="mb-4">
+        <input type="text" name="searchString" value="@ViewBag.CurrentSearch" placeholder="Search" class="p-2 rounded border border-gray-600 bg-gray-700 text-white" />
+        <select name="pageSize" onchange="this.form.submit()" class="p-2 rounded border border-gray-600 bg-gray-700 text-white">
+            <!option value="10" @(ViewBag.PageSize == 10 ? "selected" : "")>10</!option>
+            <!option value="25" @(ViewBag.PageSize == 25 ? "selected" : "")>25</!option>
+            <!option value="50" @(ViewBag.PageSize == 50 ? "selected" : "")>50</!option>
+            <!option value="100" @(ViewBag.PageSize == 100 ? "selected" : "")>100</!option>
+        </select>
+        <button type="submit" class="px-4 py-2 bg-indigo-500 text-white rounded hover:bg-indigo-600">Filter</button>
+    </form>
+
     <div class="overflow-x-auto">
         <table class="min-w-full bg-gray-700 text-white border border-gray-600 shadow-md rounded-lg">
             <thead class="bg-gray-600">
-            <tr>
-                <th class="py-2 px-4 border-b">ID</th>
-                <th class="py-2 px-4 border-b">Name</th>
-                <th class="py-2 px-4 border-b">Price</th>
-                <th class="py-2 px-4 border-b">Actions</th>
-            </tr>
+                <tr>
+                    <th class="py-2 px-4 border-b">ID</th>
+                    <th class="py-2 px-4 border-b">Name</th>
+                    <th class="py-2 px-4 border-b">Price</th>
+                    <th class="py-2 px-4 border-b">Actions</th>
+                </tr>
             </thead>
             <tbody>
-            @foreach (var product in Model)
-            {
-                <tr class="hover:bg-gray-500">
-                    <td class="py-2 px-4 border-b">@product.Id</td>
-                    <td class="py-2 px-4 border-b">@product.Name</td>
-                    <td class="py-2 px-4 border-b">@product.Price</td>
-                    <td class="py-2 px-4 border-b">
-                        <a href="@Url.Action("Edit", new { id = product.Id })" class="text-blue-400 hover:text-blue-600">Edit</a> |
-                        <a href="@Url.Action("Delete", new { id = product.Id })" class="text-red-400 hover:text-red-600">Delete</a>
-                    </td>
-                </tr>
-            }
+                @foreach (var product in Model)
+                {
+                    <tr class="hover:bg-gray-500">
+                        <td class="py-2 px-4 border-b">@product.Id</td>
+                        <td class="py-2 px-4 border-b">@product.Name</td>
+                        <td class="py-2 px-4 border-b">@product.Price</td>
+                        <td class="py-2 px-4 border-b">
+                            <a href="@Url.Action("Edit", new { id = product.Id })" class="text-blue-400 hover:text-blue-600">Edit</a> |
+                            <a href="@Url.Action("Delete", new { id = product.Id })" class="text-red-400 hover:text-red-600">Delete</a>
+                        </td>
+                    </tr>
+                }
             </tbody>
         </table>
+    </div>
+
+    <div class="mt-4">
+        <ul class="flex justify-center">
+            <li class="mx-2">
+                @if (ViewBag.CurrentPage > 1)
+                {
+                    <a href="@Url.Action("Index", new { searchString = ViewBag.CurrentSearch, pageNumber = ViewBag.CurrentPage - 1, pageSize = ViewBag.PageSize })" class="px-3 py-2 bg-gray-600 text-white rounded hover:bg-gray-700">Previous</a>
+                }
+                else
+                {
+                    <span class="px-3 py-2 bg-gray-600 text-white rounded opacity-50 cursor-not-allowed">Previous</span>
+                }
+            </li>
+            <li class="mx-2">
+                <a href="@Url.Action("Index", new { searchString = ViewBag.CurrentSearch, pageNumber = ViewBag.CurrentPage + 1, pageSize = ViewBag.PageSize })" class="px-3 py-2 bg-gray-600 text-white rounded hover:bg-gray-700">Next</a>
+            </li>
+        </ul>
     </div>
 </div>

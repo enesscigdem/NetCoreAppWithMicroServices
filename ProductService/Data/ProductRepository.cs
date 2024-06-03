@@ -1,5 +1,7 @@
 using Bogus;
 using ProductService.Models;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace ProductService.Data
 {
@@ -12,9 +14,9 @@ namespace ProductService.Data
             var faker = new Faker<Product>()
                 .RuleFor(p => p.Id, f => f.IndexFaker + 1)
                 .RuleFor(p => p.Name, f => f.Commerce.ProductName())
-                .RuleFor(p => p.Price, f => Convert.ToDecimal((f.Commerce.Price())));
+                .RuleFor(p => p.Price, f => Convert.ToDecimal(f.Commerce.Price()));
 
-            products = faker.Generate(1000);
+            products = faker.Generate(10000);
         }
 
         public IEnumerable<Product> GetAllProducts(int pageNumber, int pageSize)
